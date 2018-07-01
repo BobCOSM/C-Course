@@ -10,6 +10,8 @@ objects = $(src_dir)/Rectangle.o \
 		$(src_dir)/main.o
 
 $(target):$(objects)
+	@rm -rf $(out_dir)
+	@mkdir $(out_dir)
 	$(CC) -o $(target) $(objects)
 	
 clean:
