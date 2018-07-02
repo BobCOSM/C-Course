@@ -1,5 +1,7 @@
 #include "loopfor.h"
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 void printnnt() //9x9 mul table
 {
@@ -18,11 +20,36 @@ void printnnt() //9x9 mul table
 static void print_nums(int *nums,int size)
 {
     int i = 0;
-    for(i = 0;i < size; i++)
+    for(i = 0;i < size ; i++)
     {
         printf("%d ",nums[i]);
     }
     printf("\n");
+}
+
+void random_sort_nums(int *nums,int size)
+{
+    int i = 0;
+    srand((int)time(NULL));
+    for(i = 0; i < size - 1; i++)
+    {   
+        int cur_max_index = size - i -1;
+        int rand_num = rand();
+        int random_index = (int)(rand_num % (cur_max_index + 1));
+
+//        int tmp = nums[random_index];
+//        nums[random_index] = nums[cur_max_index];
+//        nums[cur_max_index] = tmp;
+        if(random_index == cur_max_index)
+        {
+            continue;
+        }
+        nums[random_index] = nums[random_index] + nums[cur_max_index];
+        nums[cur_max_index] = nums[random_index] - nums[cur_max_index];
+        nums[random_index] = nums[random_index] - nums[cur_max_index];
+    }  
+    printf("random nums : ");
+    print_nums(nums,size);
 }
 
 void bubble_sort(int *nums,int size)
@@ -42,6 +69,7 @@ void bubble_sort(int *nums,int size)
             }
         }
     }
+    printf("bubble_sort : ");
     print_nums(nums,size);
 }
 
@@ -67,6 +95,12 @@ void select_sort(int *nums,int size)
             nums[key_index] = nums[key_index] - nums[i];
         }
     }
+    printf("select_sort : ");
     print_nums(nums,size);
+}
+
+void insert_sort(int *nums,int size )
+{
+   //need fix 
 }
 
