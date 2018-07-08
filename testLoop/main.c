@@ -9,5 +9,7 @@ int main()
     bubble_sort(nums,10);
     random_sort_nums(nums,10);
     select_sort(nums,10);
+    random_sort_nums(nums,10);
+    insert_sort(nums,10);
     return 0;
 }

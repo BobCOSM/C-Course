@@ -60,7 +60,7 @@ void bubble_sort(int *nums,int size)
         int j = 0;
         for(j = 0; j < size - i - 1; j++)
         {
-            if(nums[j] < nums[j+1])
+            if(nums[j] > nums[j+1])
             {
                 //int tmp_num = nums[j];
                 nums[j] = nums[j + 1] + nums[j];
@@ -82,7 +82,7 @@ void select_sort(int *nums,int size)
         int j = 0;
         for(j = i + 1; j < size; j++)
         {
-            if(nums[key_index] < nums[j])
+            if(nums[key_index] > nums[j])
             {
                 key_index = j;
             }
@@ -101,6 +101,23 @@ void select_sort(int *nums,int size)
 
 void insert_sort(int *nums,int size )
 {
-   //need fix 
+//need fix
+    int i = 0;
+    for(i = 1;i < size; i++)
+    {
+        int key = nums[i];
+        int j = i - 1;
+        for(; j >= 0; j--)
+        {
+            if(nums[j] < key)
+            {
+                break;
+            }
+            nums[j + 1] = nums[j];
+        }
+        nums[j + 1] = key;
+    }
+    printf("insert_sort : ");
+    print_nums(nums,size);
 }
 
