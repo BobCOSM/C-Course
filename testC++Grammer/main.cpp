@@ -47,6 +47,7 @@ public:
     ~B()
     {
         delete data;
+        data = NULL;
     }
 };
 
@@ -68,7 +69,7 @@ B::B(A* data)
 template<typename T>
 bool fun(T a,T b)
 {
-    return a.equal(b);
+    return a->equal(b);
 }
 
 int sum(int a,int b)
@@ -88,7 +89,7 @@ int main()
     int _sum = sum(10.0,20);
     A *a0 = new A(100);
     A *a1 = new A(200);
-    bool res0 = a0->equal(a1);
+    bool res0 = fun(a0,a1);//a0->equal(a1);
 
     cout << a0->get_data() <<endl;
     cout << a1->get_data() <<endl;
@@ -108,7 +109,7 @@ int main()
     cout << "second " << endl;
     cout << a0->get_data() <<endl;
     cout << a1->get_data() <<endl;
-    bool res1 = b1->equal(b0);
+    bool res1 = fun(b1,b0);//b1->equal(b0);
 
     if(res1)
     {
@@ -119,7 +120,7 @@ int main()
         cout << "b0 != b1" <<endl;
     }
 
-    bool res2 = b2->equal(b0);
+    bool res2 = fun(b2,b0);//b2->equal(b0);
     if(res2)
     {
         cout << "b0 == b2" <<endl;
@@ -129,7 +130,16 @@ int main()
         cout << "b0 != b2" <<endl;
     }
 
-    
+    delete a0;
+    a0 = NULL;
+    delete a1;
+    a1 = NULL;
+    delete b0;
+    b0 = NULL;
+    delete b1;
+    b1 = NULL;
+    delete b2;
+    b2 = NULL;
 
     cout << _sum << endl;
     return 0;
