@@ -10,7 +10,7 @@ typedef node N_NODE;
 class Triangle : public Shape{
 	public :
 		Triangle();
-		virtual void show();
+		//void show();
 		virtual ~Triangle();
 		N_NODE* getSNode();
 };

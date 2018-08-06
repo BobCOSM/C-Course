@@ -17,7 +17,7 @@ class Rectangle : public Shape
 		static Rectangle* mRect;
 	public:
 		static Rectangle* getInstance();
-		virtual void show();
+	    void show();
 		virtual ~Rectangle();
 };
 

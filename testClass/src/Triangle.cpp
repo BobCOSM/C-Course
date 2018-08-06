@@ -10,9 +10,9 @@ Triangle::~Triangle(){
 	std::cout<<" ~Triangle "<<std::endl;
 }
 
-void Triangle::show(){
-	std::cout<<" triangle show"<<std::endl;
-}
+//void Triangle::show(){
+//	std::cout<<" triangle show"<<std::endl;
+//}
 N_NODE* Triangle::getSNode(){
 	
 }

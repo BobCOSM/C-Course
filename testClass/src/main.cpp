@@ -5,10 +5,10 @@
 using namespace std;
 
 int main(int args,char* argv[]){
-	Rectangle *r = Rectangle::getInstance();
+	Shape *r = Rectangle::getInstance();
 	r->show();
 	delete r;
-	Triangle *t = new Triangle();
+	Shape *t = new Triangle();
 	t->show();
 	delete t;
 	if(0){
