@@ -2,6 +2,10 @@
 #include <time.h>
 #include <stdlib.h>
 
+typedef int BOOL;
+#define TRUE 1
+#define FALSE 0
+
 void random_answer(char *dest,int size)
 {
     srand((int)time(NULL));
@@ -15,10 +19,10 @@ void random_answer(char *dest,int size)
 //    dest[1] = '6';
 //    dest[2] = '3';
 //    dest[3] = '3';
-    printf("dest : %s\n",dest);
+//    printf("dest : %s\n",dest);
 }
 
-void get_option(char *dest,char *src,int size)
+BOOL get_option(char *dest,char *src,int size)
 {
     int count_a = 0;
     int count_b = 0;
@@ -54,6 +58,14 @@ void get_option(char *dest,char *src,int size)
         }
     }
     printf("A%dB%d\n",count_a,count_b);
+    if(count_a == 4)
+    {
+        return TRUE;
+    }
+    else
+    {
+        return FALSE;
+    }
 }
 
 int main()
@@ -61,6 +73,7 @@ int main()
     char dest[5] = {0};
     char src[5] = {0};
     random_answer(dest,4);
+    BOOL res = FALSE;
     do{
         printf("please input your answer :");
         int i = 0;
@@ -70,7 +83,8 @@ int main()
         }
         getchar();
         printf("src : %s\n",src);
-        get_option(dest,src,4);
-    }while(1);
+        res = get_option(dest,src,4);
+    }while(!res);
+    printf("YOU WIN !!!!\n");
     return 0;
 }
