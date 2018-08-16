@@ -68,6 +68,39 @@ BOOL get_option(char *dest,char *src,int size)
     }
 }
 
+int get_src(char *src,int size)
+{
+    memset(src,0,size * sizeof(char));
+    char ch = 0;
+    int real_count = 0;
+    int input_end = 0;
+    while(1)
+    {
+        ch = getchar();
+        if(ch == '\n' )
+        {
+            break;
+        }
+        if(real_count < size)
+        {
+            if(input_end == 1)
+            {
+                continue;
+            }
+            else if(ch >= '0' && ch <= '9')
+            {
+                src[real_count] = ch;
+                real_count ++;
+            }
+            else
+            {
+                input_end = 1;
+            }
+        }
+    }
+    return real_count;
+}
+
 int main()
 {
     char dest[5] = {0};
@@ -76,13 +109,19 @@ int main()
     BOOL res = FALSE;
     do{
         printf("please input your answer :");
-        int i = 0;
-        for(i = 0;i<4;i++)
-        {
-            src[i] = getchar();
-        }
-        getchar();
+        //int i = 0;
+        //for(i = 0;i<4;i++)
+        //{
+        //    src[i] = getchar();
+        //}
+        //getchar();
+        int real_count = get_src(src,4);
         printf("src : %s\n",src);
+        if(real_count < 4)
+        {
+            printf("too short \n");
+            continue;
+        }
         res = get_option(dest,src,4);
     }while(!res);
     printf("YOU WIN !!!!\n");
