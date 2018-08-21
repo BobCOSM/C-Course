@@ -1,4 +1,4 @@
-
+#include "type.h"
 typedef struct data_node
 {
     int id;
@@ -21,7 +21,7 @@ bool remove_by_id(DATALIST list,int data_id);
 /*
 *用于查找list中id为data_id的数据
 */
-DATANODE *selet_node_by_id(DATALIST list,int data_id);
+DATANODE *select_node_by_id(DATALIST list,int data_id);
 
 /*
 *用于将list中id为data_id的元素的名字改为name_str

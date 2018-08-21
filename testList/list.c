@@ -1,5 +1,7 @@
 #include "list.h"
-
+#include <string.h>
+#include <stdlib.h>
+#include <stdio.h>
 /*
 *用于想list中插入data
 *@param list 要插入数据的链表
@@ -18,6 +20,7 @@ void add(DATALIST list,DATANODE *data)
         if(p->next == NULL)
         {
             p->next = data;
+            printf(" first add \n");
         }
         else
         {
@@ -28,14 +31,16 @@ void add(DATALIST list,DATANODE *data)
                 {
                     data->next = q;
                     p->next = data;
+                    printf("find seat \n");
                     break;
                 }
                 p = q;
-                q = q->next;
+                q = p->next;
             }
             if(q == NULL)   //data 的id当前最大
             {
                 p->next = data;
+                printf("insert to last seat\n");
             }
         }
     }
@@ -52,16 +57,19 @@ bool remove_by_id(DATALIST list,int data_id)
         return res;
     }
     DATANODE *p = list;
-    DATANODE *q = q->next;
+    DATANODE *q = p->next;
     while(q != NULL)
     {
         if(q->id == data_id)
         {
+            printf("remove find data\n");
             p->next = q->next;
             free(q);
             res = true;
             break;
         }
+        p = q;
+        q = p->next;
     }
     return res;
 }
@@ -69,14 +77,14 @@ bool remove_by_id(DATALIST list,int data_id)
 /*
 *用于查找list中id为data_id的数据
 */
-DATANODE *selet_node_by_id(DATALIST list,int data_id)
+DATANODE *select_node_by_id(DATALIST list,int data_id)
 {
     DATANODE *res = NULL;
     if(list == NULL)
     {
         return res;
     }
-    res = p->next;
+    res = list->next;
     while(res != NULL)
     {
         if(res->id == data_id)
@@ -93,7 +101,7 @@ DATANODE *selet_node_by_id(DATALIST list,int data_id)
 */
 void change_name_by_id(DATALIST list,int data_id,char *name_str)
 {
-    DATANODE *node = selet_noode_by_id(list,data_id);
+    DATANODE *node = select_node_by_id(list,data_id);
     strcpy(node->name,name_str);
 }
 
