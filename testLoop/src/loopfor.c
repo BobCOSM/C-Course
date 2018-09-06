@@ -121,3 +121,60 @@ void insert_sort(int *nums,int size )
     print_nums(nums,size);
 }
 
+
+static void merge(int *nums,int start,int mid,int end)
+{
+    static int count = 0;
+    int n1 = mid - start + 1 + 1;
+    int n2 = end - mid + 1;
+    int *L = (int *)malloc(sizeof(int) * n1);
+    int *R = (int *)malloc(sizeof(int) * n2);
+    memcpy(L,nums + start ,sizeof(int) * n1);
+    memcpy(R,nums + mid + 1,sizeof(int) * n2);
+    
+    L[n1 - 1] = 10;
+    R[n2 - 1] = 10;
+    printf("%d : \n",count);
+    print_nums(L,n1);
+    printf("\n");
+    print_nums(R,n2);
+    printf("\n");
+    int i = 0 ;
+    int j = 0 ;
+    int k = start ;
+    for(k = start;k <= end;k++)
+    {
+        if(L[i] <= R[j])
+        {
+            nums[k] = L[i];
+            i += 1;
+        }
+        else
+        {
+            nums[k] = R[j];
+            j += 1;
+        }
+    }
+    printf("merge_sort %d :\n",count);
+    print_nums(nums,10);
+    count += 1;
+}
+
+void merge_sort(int *nums,int start,int end)
+{
+    if(start < end)
+    {
+        int q = (start + end ) /2;
+        merge_sort(nums,start,q);
+        merge_sort(nums,q+1,end);
+        merge(nums,start,q,end);
+    }
+}
+
+
+
+
+
+
+
+

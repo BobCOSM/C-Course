@@ -7,4 +7,5 @@ void select_sort(int *nums,int size);
 void insert_sort(int *nums,int size);
 
 void random_sort_nums(int *nums,int size); 
+void merge_sort(int *nums,int start,int end);
 #endif
