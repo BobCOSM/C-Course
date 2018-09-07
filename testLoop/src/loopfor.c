@@ -134,11 +134,11 @@ static void merge(int *nums,int start,int mid,int end)
     
     L[n1 - 1] = 10;
     R[n2 - 1] = 10;
-    printf("%d : \n",count);
-    print_nums(L,n1);
-    printf("\n");
-    print_nums(R,n2);
-    printf("\n");
+//    printf("%d : \n",count);
+//    print_nums(L,n1);
+//    printf("\n");
+//    print_nums(R,n2);
+//    printf("\n");
     int i = 0 ;
     int j = 0 ;
     int k = start ;
@@ -155,8 +155,10 @@ static void merge(int *nums,int start,int mid,int end)
             j += 1;
         }
     }
-    printf("merge_sort %d :\n",count);
-    print_nums(nums,10);
+    //printf("merge_sort %d :\n",count);
+    //print_nums(nums,10);
+    free(L);
+    free(R);
     count += 1;
 }
 

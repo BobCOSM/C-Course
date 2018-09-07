@@ -14,6 +14,7 @@ int main()
     random_sort_nums(nums,10);
     merge_sort(nums,0,9);
     int i = 0;
+    printf("merge_sort :");
     for(;i<10;i++)
     {
         printf("%d ",nums[i]);
