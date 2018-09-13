@@ -1,9 +1,10 @@
-#include "loopfor.h"
+#include "./inc/loopfor.h"
 
 int nums[] = {9,3,5,1,2,0,4,7,6,8};
 
 int main()
 {
+    int i = 0;
     printnnt();
     random_sort_nums(nums,10);
     bubble_sort(nums,10);
@@ -13,7 +14,6 @@ int main()
     insert_sort(nums,10);
     random_sort_nums(nums,10);
     merge_sort(nums,0,9);
-    int i = 0;
     printf("merge_sort :");
     for(;i<10;i++)
     {

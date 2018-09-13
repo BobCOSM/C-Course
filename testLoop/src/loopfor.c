@@ -1,4 +1,4 @@
-#include "loopfor.h"
+#include "../inc/loopfor.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -121,7 +121,7 @@ void insert_sort(int *nums,int size )
     print_nums(nums,size);
 }
 
-
+/*
 static void merge(int *nums,int start,int mid,int end)
 {
     static int count = 0;
@@ -161,7 +161,7 @@ static void merge(int *nums,int start,int mid,int end)
     free(R);
     count += 1;
 }
-
+*/
 void merge_sort(int *nums,int start,int end)
 {
     if(start < end)
@@ -169,8 +169,12 @@ void merge_sort(int *nums,int start,int end)
         int q = (start + end ) /2;
         merge_sort(nums,start,q);
         merge_sort(nums,q+1,end);
-        merge(nums,start,q,end);
+        insert_sort(nums + start, end - start + 1);
     }
+	else
+	{
+		printf(" merge_orgin:%d\r\n",nums[start]);
+	}
 }
 
 
